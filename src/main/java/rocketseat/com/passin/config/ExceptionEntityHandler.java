@@ -30,11 +30,11 @@ public class ExceptionEntityHandler {
 
     @ExceptionHandler(AttendeeAlreadyExistException.class)
     public ResponseEntity handleAttendeeAlreadyExists(AttendeeAlreadyExistException exception){
-        return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(new ErrorResponseDTO(exception.getMessage()));
     }
 
     @ExceptionHandler(CheckInAlreadyExistsException.class)
     public ResponseEntity handleCheckInAlreadyExists(CheckInAlreadyExistsException exception){
-        return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(new ErrorResponseDTO(exception.getMessage()));
     }
 }
